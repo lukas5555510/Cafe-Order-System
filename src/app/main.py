@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.router import router
+from src.app.api.router import router
 
 def create_app():
     app = FastAPI(

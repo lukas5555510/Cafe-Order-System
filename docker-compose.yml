@@ -1,9 +1,17 @@
 services:
-  web:
+  api:
     build: .
-    container_name: fastapi_app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - .:/app
+    container_name: cafe_app
     ports:
       - "8000:8000"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - PYTHONPATH=/app/src
+      - WATCHFILES_FORCE_POLLING=1
+    command: >
+      /app/.venv/bin/uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+      --reload-dir /app/src

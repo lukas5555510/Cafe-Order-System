@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from src.app.api.router import router
 
+
 def create_app():
     app = FastAPI(
         title="Cafe-Order-System",

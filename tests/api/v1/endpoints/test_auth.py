@@ -3,8 +3,11 @@ from app.main import app
 
 client = TestClient(app)
 
+
 def test_hello_world_endpoint():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
+    json_data = response.json()
+    assert "data" in json_data
+    assert json_data["data"] == {"message": "Hello World"}
